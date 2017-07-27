@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.chohyunsu.eunsolMamma.dao.FirstDao">
+	<select id="mammaDailySelect" parameterType="String" resultType="Map">
+		SELECT
+		SUM(milk) as milk,
+		date
+		FROM
+		`eunsolMamma`.`DailyMamma`
+		WHERE
+		active_yn = 'Y'
+		GROUP BY date;
+	</select>
+
+	<select id="mammaDetailSelect" parameterType="String" resultType="Map">
+		SELECT
+		date, time, milk
+		FROM
+		(SELECT
+		date, time, milk
+		FROM
+		`eunsolMamma`.`DailyMamma`
+		WHERE
+		active_yn = 'Y'
+		ORDER BY date DESC , time DESC
+		LIMIT 10) milk
+		ORDER BY milk.date ASC , milk.time ASC;
+
+	</select>
+
+
+
+	<insert id="insertMilk" parameterType="com.chohyunsu.eunsolMamma.model.MammaDetail">
+		INSERT INTO
+		`eunsolMamma`.`DailyMamma`
+		(`date`,
+		`time`,
+		`milk`,
+		`active_yn`)
+		VALUES
+		(DATE_FORMAT(now(), '%Y-%m-%d'),#{time},#{milk},"Y");
+
+
+
+	</insert>
+</mapper>

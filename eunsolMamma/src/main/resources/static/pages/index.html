@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="">
+<meta name="author" content="">
+
+<title>은솔 맘마</title>
+
+<!-- Bootstrap Core CSS -->
+<!-- <link href="../vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet"> -->
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+	integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
+	crossorigin="anonymous">
+
+<!-- MetisMenu CSS -->
+<link href="../vendor/metisMenu/metisMenu.min.css" rel="stylesheet">
+
+<!-- Custom CSS -->
+<link href="../dist/css/sb-admin-2.css" rel="stylesheet">
+
+<!-- Morris Charts CSS -->
+<link href="../vendor/morrisjs/morris.css" rel="stylesheet">
+
+<!-- Custom Fonts -->
+<link href="../vendor/font-awesome/css/font-awesome.min.css"
+	rel="stylesheet" type="text/css">
+
+<!-- Slider http://seiyria.com/bootstrap-slider/ -->
+<link rel="stylesheet"
+	href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-slider/9.8.0/css/bootstrap-slider.css" />
+<link rel="stylesheet"
+	href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-slider/9.8.0/css/bootstrap-slider.min.css" />
+
+
+<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+<!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+
+</head>
+
+<body>
+
+	<div id="wrapper">
+
+		<!-- Navigation -->
+		<nav class="navbar navbar-default navbar-static-top" role="navigation"
+			style="margin-bottom: 0">
+			<div class="navbar-header">
+				<!-- <button type="button" class="navbar-toggle" data-toggle="collapse"
+					data-target=".navbar-collapse">
+					<span class="sr-only">Toggle navigation</span> <span
+						class="icon-bar"></span> <span class="icon-bar"></span> <span
+						class="icon-bar"></span>
+				</button> -->
+				<a class="navbar-brand" href="index.html">은솔 맘마 v0.2</a>
+			</div>
+			<!-- /.navbar-header -->
+
+			<!-- <ul class="nav navbar-top-links navbar-right">
+
+				/.dropdown
+				<li class="dropdown"><a class="dropdown-toggle"
+					data-toggle="dropdown" href="#"> <i class="fa fa-user fa-fw"></i>
+						<i class="fa fa-caret-down"></i>
+				</a>
+					<ul class="dropdown-menu dropdown-user">
+						<li><a href="#"><i class="fa fa-user fa-fw"></i> User
+								Profile</a></li>
+						<li><a href="#"><i class="fa fa-gear fa-fw"></i> Settings</a>
+						</li>
+						<li class="divider"></li>
+						<li><a href="login.html"><i class="fa fa-sign-out fa-fw"></i>
+								Logout</a></li>
+					</ul> /.dropdown-user</li>
+				/.dropdown
+			</ul> -->
+			<!-- /.navbar-top-links -->
+
+			<!-- <div class="navbar-default sidebar" role="navigation">
+				<div class="sidebar-nav navbar-collapse">
+					<ul class="nav" id="side-menu">
+						<li class="sidebar-search">
+							<div class="input-group custom-search-form">
+								<input type="date" class="form-control" placeholder="Search...">
+								<span class="input-group-btn">
+									<button class="btn btn-default" type="button">
+										<i class="fa fa-search"></i>
+									</button>
+								</span>
+							</div> /input-group
+						</li>
+						<li><a href="index.html"><i class="fa fa-dashboard fa-fw"></i>
+								Dashboard</a></li>
+						<li><a href="#"><i class="fa fa-bar-chart-o fa-fw"></i>
+								Charts<span class="fa arrow"></span></a>
+							<ul class="nav nav-second-level">
+								<li><a href="flot.html">Flot Charts</a></li>
+								<li><a href="morris.html">Morris.js Charts</a></li>
+							</ul> /.nav-second-level</li>
+
+
+					</ul>
+				</div>
+				/.sidebar-collapse
+			</div> -->
+			<!-- /.navbar-static-side -->
+		</nav>
+
+		<div id="page-wrapper">
+			<div class="margin-buffer-10"></div>
+			<!-- /.row -->
+			<div class="well">
+				<div class="row">
+					<div class="col-lg-5 col-md-5 col-sm-5 col-xs-5">
+						<div class="input-group">
+							<!-- <span class="input-group-addon"><i
+							class="glyphicon glyphicon-time"></i></span>  -->
+							<input type="time" id="currentTime" class="form-control ">
+						</div>
+
+
+					</div>
+					<div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
+						<!-- <div class="btn-group">
+							<button type="button"
+								class="btn btn-info  dropdown-toggle"
+								data-toggle="dropdown">
+								먹은양 <span class="caret"></span>
+							</button>
+							<ul class="dropdown-menu pull-right" role="menu">
+								<li>20</li>
+							</ul>
+						</div> -->
+
+						<input type="number" id="milkAmtSliderVal" class="form-control"
+							value="50">
+
+
+
+					</div>
+
+					<div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
+						<button type="button" class="btn btn-info" id="btnInsertMilk">
+							<span class="glyphicon glyphicon-baby-formula"></span> 확인
+						</button>
+					</div>
+				</div>
+
+				<div class="margin-buffer-10"></div>
+				<div class="row">
+
+					<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 ">
+						<input id="milkAmtSlider" type="text" data-slider-id="GC"
+							data-slider-min="10" data-slider-max="200" data-slider-step="10"
+							data-slider-value="50" data-slider-tooltip="hide" />
+					</div>
+
+
+				</div>
+
+			</div>
+			<div class="margin-buffer-20"></div>
+
+			<div class="row">
+				<div class="col-lg-6 col-md-12">
+					<div class="panel panel-primary">
+						<div class="panel-heading">
+							<div class="row">
+								<div class="col-xs-3">
+									<i class="fa fa-clock-o fa-spin fa-5x"></i>
+								</div>
+								<div class="col-xs-9 text-right">
+									<div class="huge" id="lastMilk">50 ML</div>
+									<div id="lastTime">오후 3시 30분에 먹었어요!</div>
+								</div>
+							</div>
+						</div>
+						<!-- <a href="#">
+							<div class="panel-footer">
+								<span class="pull-left">View Details</span> <span
+									class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+								<div class="clearfix"></div>
+							</div>
+						</a> -->
+					</div>
+				</div>
+				<div class="col-lg-6 col-md-12">
+					<div class="panel panel-info">
+						<div class="panel-heading">
+							<div class="row">
+								<div class="col-xs-3">
+									<i class="fa fa-area-chart fa-5x"></i>
+								</div>
+								<div class="col-xs-9 text-right">
+									<div class="huge" id="todayMilkSum">오늘은 ML먹고있어요</div>
+									<div id="lastdayMilkSum">어제는 ML먹었어요</div>
+								</div>
+							</div>
+						</div>
+						<!-- <a href="#">
+							<div class="panel-footer">
+								<span class="pull-left">View Details</span> <span
+									class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+								<div class="clearfix"></div>
+							</div>
+						</a> -->
+					</div>
+				</div>
+
+
+			</div>
+			<!-- /.row -->
+			<div class="row col-lg-12 col-md-12">
+
+				<div class="panel panel-default">
+					<div class="panel-heading">
+						<i class="fa fa-bar-chart-o fa-fw"></i> 일별 맘마 현황
+						<div class="pull-right"></div>
+					</div>
+					<!-- /.panel-heading -->
+					<div class="panel-body">
+						<div id="morris-mamma-daily"></div>
+					</div>
+					<!-- /.panel-body -->
+				</div>
+				<!-- /.panel -->
+
+				<div class="panel panel-default">
+					<div class="panel-heading">
+						<i class="fa fa-bar-chart-o fa-fw"></i> 맘마 현황
+						<div class="pull-right">
+							<div class="btn-group">
+								<button type="button"
+									class="btn btn-default btn-xs dropdown-toggle"
+									data-toggle="dropdown">
+									Actions <span class="caret"></span>
+								</button>
+								<ul class="dropdown-menu pull-right" role="menu">
+									<li><a href="#">Action</a></li>
+									<li><a href="#">Another action</a></li>
+									<li><a href="#">Something else here</a></li>
+									<li class="divider"></li>
+									<li><a href="#">Separated link</a></li>
+								</ul>
+							</div>
+						</div>
+					</div>
+					<!-- /.panel-heading -->
+					<div class="panel-body">
+						<div class="row">
+							<div class="col-lg-4">
+								<div class="table-responsive">
+									<table class="table table-bordered table-hover table-striped"
+										id="mammaDetailTable">
+										<thead>
+											<tr>
+												<th>#</th>
+												<th>Date</th>
+												<th>Time</th>
+												<th>Amount</th>
+											</tr>
+										</thead>
+										<tbody>
+
+
+										</tbody>
+									</table>
+								</div>
+								<!-- /.table-responsive -->
+							</div>
+							<!-- /.col-lg-4 (nested) -->
+							<!-- <div class="col-lg-8">
+								<div id="morris-mamma-detail"></div>
+							</div> -->
+							<!-- /.col-lg-8 (nested) -->
+						</div>
+						<!-- /.row -->
+					</div>
+					<!-- /.panel-body -->
+				</div>
+
+				<!-- /.col-lg-8 -->
+
+				<!-- /.col-lg-4 -->
+			</div>
+			<!-- /.row -->
+		</div>
+		<!-- /#page-wrapper -->
+
+	</div>
+	<!-- /#wrapper -->
+
+	<!-- jQuery -->
+	<script src="../vendor/jquery/jquery.min.js"></script>
+
+	<!-- Bootstrap Core JavaScript -->
+	<!-- <script src="../vendor/bootstrap/js/bootstrap.min.js"></script> -->
+	<script
+		src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
+		integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
+		crossorigin="anonymous"></script>
+	<!-- Metis Menu Plugin JavaScript -->
+	<script src="../vendor/metisMenu/metisMenu.min.js"></script>
+
+	<!-- Morris Charts JavaScript -->
+	<script src="../vendor/raphael/raphael.min.js"></script>
+	<script src="../vendor/morrisjs/morris.min.js"></script>
+
+
+	<!-- Custom Theme JavaScript -->
+	<script src="../dist/js/sb-admin-2.js"></script>
+
+	<!-- Slider -->
+
+	<script
+		src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-slider/9.8.0/bootstrap-slider.min.js"></script>
+
+
+	<script type="text/javascript">
+		//일별 분유량 조회
+		function fnGetMammaDaily() {
+			$.getJSON("/eunsolMamma/getMammaDaily.do", function(json) {
+				Morris.Area({
+					element : 'morris-mamma-daily',
+					data : json,
+					xkey : 'date',
+					ykeys : [ 'milk' ],
+					labels : [ '맘마' ],
+					pointSize : 2,
+					hideHover : 'auto',
+					resize : true
+				});
+				
+				
+				$("#todayMilkSum").text(json[json.length - 1].milk + " ML");
+				$("#lastdayMilkSum").text("어제는 "+json[json.length - 2].milk + " ML먹었어요");
+			}
+
+			);
+		}
+
+		//분유량 조회
+		function fnGetMammaDetail() {
+			$.getJSON("/eunsolMamma/getMammaDetail.do", function(json) {
+				var i = 1;
+				$.each(json, function(cnt, item) {
+					$('#mammaDetailTable > tbody').append(
+							'<tr><td>' + i + '</td><td>' + item.date
+									+ '</td><td>' + item.time + '</td><td>'
+
+									+ item.milk + '</td></tr>');
+					i++;
+				});
+
+				/* Morris.Bar({
+					element : 'morris-mamma-detail',
+					data : json,
+					xkey : 'date',
+					ykeys : [ 'milk' ],
+					labels : [ '맘마' ],
+					hideHover : 'auto',
+					resize : true
+				}); */
+				// 직전에 먹은 분유량
+				$("#lastMilk").text(json[json.length - 1].milk + " ML");
+				$("#lastTime").text(json[json.length - 1].time + " 에 먹었어요!");
+
+			});
+		}
+
+		// currentTime update
+		function currentTimeUpdate() {
+			var dt = new Date();
+			$('#currentTime').val(
+					(dt.getHours() < 10 ? '0' : '') + dt.getHours() + ":"
+							+ (dt.getMinutes() < 10 ? '0' : '')
+							+ dt.getMinutes());
+		}
+
+		// 페이지 로딩시 데이터 초기화
+		$(document).ready(function() {
+			setInterval(currentTimeUpdate(), 29000);
+			fnGetMammaDaily();
+			fnGetMammaDetail();
+		});
+	</script>
+
+
+	<script>
+		// Mlik amount Slider
+		$("#milkAmtSlider").slider();
+		$("#milkAmtSlider").on("slide", function(slideEvt) {
+			$("#milkAmtSliderVal").val(slideEvt.value);
+		});
+
+		//신규 데이터 입력
+		function fnInsertMilk() {
+			var arrMilk = {};
+			arrMilk["time"] = $("#currentTime").val();
+			arrMilk["milk"] = $("#milkAmtSliderVal").val();
+			var jsnMilk = JSON.stringify(arrMilk);
+
+			$.ajax({
+				url : "/eunsolMamma/insertMamma.do",
+				method : "POST",
+				contentType : "application/json; charset=utf-8",
+				dataType : "json",
+				data : jsnMilk, //Stringified Json Object
+				async : false, //Cross-domain requests and dataType: "jsonp" requests do not support synchronous operation
+				cache : false, //This will force requested pages not to be cached by the browser  
+				processData : false, //To avoid making query String instead of JSON
+				success : function(resposeJsonObject) {
+					// Success Action
+					location.reload();
+				}
+			});
+
+		}
+
+		$("#btnInsertMilk").on("click", fnInsertMilk);
+	</script>
+
+
+</body>
+
+</html>
